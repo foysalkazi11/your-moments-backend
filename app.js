@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(cookieParser());
-app.use(cors(corsOptions, { credentials: true }));
+app.use(cors(corsOptions, { origin: true, credentials: true }));
 //{ origin: "http://localhost:3000", credentials: true }
 //route
 app.use("/campground", require("./route/campground"));
