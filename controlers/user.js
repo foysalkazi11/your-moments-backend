@@ -29,7 +29,9 @@ module.exports.loginUser = async (req, res) => {
   try {
     if (req.isAuthenticated()) {
       const token = signToken(req.user._id);
-      res.cookie("access_token", token, { httpOnly: true, sameSite: true });
+      res.cookie("access_token", token, {
+        // httpOnly: true, sameSite: true
+      });
       res.status(200).json({
         isAuthenticated: true,
         message: "login successfully",
