@@ -11,8 +11,8 @@ module.exports.registerUser = async (req, res) => {
       const token = signToken(newUser._id);
       res.cookie("access_token", token, {
         // httpOnly: true,
-        // sameSite: true,
-        // secure: true
+        // sameSite: true
+        secure: true
       });
       res.status(201).json({
         mesBody: "user added successfully",
@@ -30,7 +30,9 @@ module.exports.loginUser = async (req, res) => {
     if (req.isAuthenticated()) {
       const token = signToken(req.user._id);
       res.cookie("access_token", token, {
-        // httpOnly: true, sameSite: true
+        // httpOnly: true,
+        // sameSite: true
+        secure: true
       });
       res.status(200).json({
         isAuthenticated: true,

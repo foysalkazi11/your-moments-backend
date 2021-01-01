@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const mongoDB = require("./confic/mongoConnect");
 const cors = require("cors");
 const mongoSanitize = require("express-mongo-sanitize");
-const corsOptions = require("./confic/corsConfic");
+const { corsOptions, whitelist } = require("./confic/corsConfic");
 // const fileUpload = require("express-fileupload");
 const app = express();
 
@@ -18,9 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(cookieParser());
-app.use(
-  cors({ origin: "https://your-moments.netlify.app", credentials: true })
-);
+app.use(cors({ origin: whitelist, credentials: true }));
 //{ origin: "http://localhost:3000", credentials: true }
 //route
 app.use("/campground", require("./route/campground"));
