@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const mongoDB = require("./confic/mongoConnect");
 const cors = require("cors");
 const mongoSanitize = require("express-mongo-sanitize");
+const { shouldSendSameSiteNone } = require("should-send-same-site-none");
 const allowCrossDomain = require("./middleware/allowCrssDomain");
 
 // const fileUpload = require("express-fileupload");
@@ -16,8 +17,9 @@ mongoDB();
 
 // app.use(fileUpload());
 // app.use(cors());
-// app.use(allowCrossDomain);
-app.all("/*", allowCrossDomain);
+app.use(allowCrossDomain);
+app.use(shouldSendSameSiteNone);
+// app.all("/*", allowCrossDomain);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
