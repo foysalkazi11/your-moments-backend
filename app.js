@@ -6,7 +6,8 @@ const cookieParser = require("cookie-parser");
 const mongoDB = require("./confic/mongoConnect");
 const cors = require("cors");
 const mongoSanitize = require("express-mongo-sanitize");
-const { corsOptions, whitelist } = require("./confic/corsConfic");
+const allowCrossDomain = require("./middleware/allowCrssDomain");
+
 // const fileUpload = require("express-fileupload");
 const app = express();
 
@@ -14,14 +15,13 @@ const app = express();
 mongoDB();
 
 // app.use(fileUpload());
-app.use(cors({ origin: whitelist, credentials: true }));
+app.use(cors());
+app.use(allowCrossDomain);
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
-app.use(cookieParser());
 
-//{ origin: "http://localhost:3000", credentials: true }
-//route
 app.use("/campground", require("./route/campground"));
 app.use("/campground/:id/review", require("./route/reviews"));
 app.use("/user", require("./route/user"));
