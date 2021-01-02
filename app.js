@@ -14,11 +14,12 @@ const app = express();
 mongoDB();
 
 // app.use(fileUpload());
+app.use(cors({ origin: whitelist, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 app.use(cookieParser());
-app.use(cors({ origin: whitelist, credentials: true }));
+
 //{ origin: "http://localhost:3000", credentials: true }
 //route
 app.use("/campground", require("./route/campground"));

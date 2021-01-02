@@ -1,6 +1,6 @@
 const signToken = require("../confic/signJWT");
 const User = require("../models/userModal");
-
+const cookieOptions = require("../confic/cookieOptions");
 module.exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -9,11 +9,7 @@ module.exports.registerUser = async (req, res) => {
     const newUser = await User.register(user, password);
     if (newUser) {
       const token = signToken(newUser._id);
-      res.cookie("access_token", token, {
-        httpOnly: true,
-        sameSite: true
-        // secure: true
-      });
+      res.cookie("access_token", token, cookieOptions);
       res.status(201).json({
         mesBody: "user added successfully",
         isAuthenticated: true,
@@ -29,11 +25,7 @@ module.exports.loginUser = async (req, res) => {
   try {
     if (req.isAuthenticated()) {
       const token = signToken(req.user._id);
-      res.cookie("access_token", token, {
-        httpOnly: true,
-        sameSite: true
-        // secure: true
-      });
+      res.cookie("access_token", token, cookieOptions);
       res.status(200).json({
         isAuthenticated: true,
         message: "login successfully",
