@@ -15,12 +15,14 @@ const app = express();
 mongoDB();
 
 // app.use(fileUpload());
-app.use(cors());
+// app.use(cors());
 app.use(allowCrossDomain);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
+
+// app.all('/*', allowCrossDomain);
 
 app.use("/campground", require("./route/campground"));
 app.use("/campground/:id/review", require("./route/reviews"));
