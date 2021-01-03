@@ -18,7 +18,7 @@ mongoDB();
 // app.use(fileUpload());
 // app.use(cors());
 app.use(allowCrossDomain);
-app.use(shouldSendSameSiteNone);
+// app.use(shouldSendSameSiteNone);
 // app.all("/*", allowCrossDomain);
 app.use(cookieParser());
 app.use(express.json());
