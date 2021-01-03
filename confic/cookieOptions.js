@@ -5,14 +5,13 @@ let cookieOptions = {
   // Set the cookie's HttpOnly flag to ensure the cookie is
   // not accessible through JS, making it immune to XSS attacks
   httpOnly: true,
-  sameSite: "none",
-  secure: true
+  sameSite: "none"
 };
 // In production, set the cookie's Secure flag
 // to ensure the cookie is only sent over HTTPS
-// if (process.env.NODE_ENV === "production") {
-//   cookieOptions.secure = true;
-// }
+if (process.env.NODE_ENV === "production") {
+  cookieOptions.secure = true;
+}
 
 module.exports = cookieOptions;
 
