@@ -4,7 +4,8 @@ let cookieOptions = {
   expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
   // Set the cookie's HttpOnly flag to ensure the cookie is
   // not accessible through JS, making it immune to XSS attacks
-  httpOnly: true
+  httpOnly: true,
+  sameSite: true
 };
 // In production, set the cookie's Secure flag
 // to ensure the cookie is only sent over HTTPS
