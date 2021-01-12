@@ -1,6 +1,8 @@
 const { whitelist } = require("../confic/corsConfic");
+const netlifyUrl = "https://your-moments.netlify.app";
+const localUrl = "http://localhost:3000";
 const allowCrossDomain = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://your-moments.netlify.app");
+  res.header("Access-Control-Allow-Origin", netlifyUrl);
   res.header("Access-Control-Allow-Credentials", true);
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,PATCH,DELETE");
   res.header(

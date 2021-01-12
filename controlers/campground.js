@@ -18,7 +18,7 @@ module.exports.createCampground = async (req, res) => {
     .send();
 
   if (!req.file) {
-    res.status(401).json("plese upload image");
+    return res.status(401).json("plese upload image");
   }
 
   const userId = req.user._id;
