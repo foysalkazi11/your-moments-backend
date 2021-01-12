@@ -1,6 +1,8 @@
 const signToken = require("../confic/signJWT");
 const User = require("../models/userModal");
 const cookieOptions = require("../confic/cookieOptions");
+
+//register user
 module.exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -21,6 +23,7 @@ module.exports.registerUser = async (req, res) => {
   }
 };
 
+//login user
 module.exports.loginUser = async (req, res) => {
   try {
     if (req.isAuthenticated()) {
@@ -37,6 +40,7 @@ module.exports.loginUser = async (req, res) => {
   }
 };
 
+//logout user
 module.exports.logoutUser = async (req, res) => {
   try {
     res.clearCookie("access_token");
@@ -50,6 +54,7 @@ module.exports.logoutUser = async (req, res) => {
   }
 };
 
+//authenticated user
 module.exports.authenticateUser = async (req, res) => {
   try {
     res.status(200).json({

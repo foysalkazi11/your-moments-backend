@@ -22,7 +22,7 @@ const capmSchema = new Schema({
     url: String,
     filename: String
   },
-  price: Number,
+
   discription: String,
   location: String,
   date: { type: Date, default: Date.now },

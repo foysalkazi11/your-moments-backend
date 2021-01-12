@@ -25,7 +25,7 @@ const isReviewAuthor = async (req, res, next) => {
 const validateCampground = (req, res, next) => {
   const schema = Joi.object({
     title: Joi.string().required(),
-    price: Joi.number().required().min(0),
+
     image: {
       url: Joi.string().required(),
       filename: Joi.string().required()
