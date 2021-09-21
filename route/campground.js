@@ -39,7 +39,7 @@ router.patch(
   wrapAsync(campgrounds.updateGround)
 );
 
-//delete campground
+//delete camp
 router.delete(
   "/:id",
   passport.authenticate("jwt", { session: false }),
